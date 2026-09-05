@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>revolution</title>
     <style>
-        /* 기본 레이아웃 및 다크 테마 초기화 */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +12,7 @@
         }
 
         body {
-            background-color: #121212; /* 어두운 배경 */
+            background-color: #121212;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             height: 100vh;
@@ -23,8 +22,7 @@
             align-items: center;
             overflow: hidden;
         }
-
-        /* 메인 컨텐츠 중앙 배치 및 서서히 올라오는 애니메이션 */
+        
         .hero-container {
             display: flex;
             flex-direction: column;
@@ -35,7 +33,6 @@
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* [핵심 1] 둥실둥실 떠다니는 애니메이션은 링크(바깥 박스)에 적용 */
         .image-link {
             display: inline-block;
             text-decoration: none;
@@ -43,21 +40,18 @@
             animation: floating 3s ease-in-out infinite;
         }
 
-        /* [핵심 2] 이미지는 크기 확대와 부드러운 전환(transition) 효과 담당 */
         .floating-image {
             max-width: 450px;
             width: 80vw;
             height: auto;
             margin-bottom: 15px;
-            transition: transform 0.4s ease-in-out; /* 서서히 커지고 작아지는 속도 */
+            transition: transform 0.4s ease-in-out; 
         }
 
-        /* 링크에 마우스를 올렸을 때 안쪽 이미지가 서서히 커짐 */
         .image-link:hover .floating-image {
-            transform: scale(1.12); /* 12% 확대 */
+            transform: scale(1.12);
         }
 
-        /* 서브 텍스트 스타일 */
         .subtitle {
             font-size: 1.1rem;
             color: #a0a0a0;
@@ -65,7 +59,6 @@
             font-weight: 400;
         }
 
-        /* 버튼 그룹 스타일 */
         .button-group {
             display: flex;
             gap: 15px;
@@ -73,18 +66,16 @@
             justify-content: center;
         }
 
-        /* 푸터 스타일 (선 제거 완료) */
         footer {
             width: 100%;
             display: flex;
-            justify-content: flex-end; /* 우측 정렬 유지 */
+            justify-content: flex-end; 
             padding: 20px 40px;
             font-size: 0.8rem;
             color: #555555;
-            /* border-top 코드를 제거하여 선을 없앰 */
         }
 
-        /* 푸터 링크 스타일 (글자 색상 #8e8e8e 적용) */
+
         footer a {
             color: #8e8e8e;
             text-decoration: none;
@@ -92,16 +83,10 @@
             transition: color 0.2s ease;
         }
 
-        /* 푸터 링크에 마우스를 올렸을 때 색상 */
         footer a:hover {
             color: #ffffff;
         }
 
-        /* -------------------------------------------------- */
-        /* 애니메이션 키프레임 정의 */
-        /* -------------------------------------------------- */
-
-        /* 1. 페이지 시작 시 서서히 위로 올라오는 효과 */
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
@@ -113,7 +98,6 @@
             }
         }
 
-        /* 2. 통째로 위아래로 둥실둥실 떠다니는 효과 */
         @keyframes floating {
             0% {
                 transform: translateY(0px);
