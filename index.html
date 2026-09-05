@@ -1,27 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered View</title>
+    <title>revolution</title>
     <style>
-        body, html {
-            height: 100%;
+        /* 기본 레이아웃 및 다크 테마 초기화 */
+        * {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #0f0f0f;
-            color: #f0f0f0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
-            font-size: 2rem;
-            letter-spacing: 0.05em;
+
+        body {
+            background-color: #121212; /* 어두운 배경 */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* 메인 컨텐츠 중앙 배치 및 서서히 올라오는 애니메이션 */
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: auto;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* [핵심 1] 둥실둥실 떠다니는 애니메이션은 링크(바깥 박스)에 적용 */
+        .image-link {
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        /* [핵심 2] 이미지는 크기 확대와 부드러운 전환(transition) 효과 담당 */
+        .floating-image {
+            max-width: 450px;
+            width: 80vw;
+            height: auto;
+            margin-bottom: 15px;
+            transition: transform 0.4s ease-in-out; /* 서서히 커지고 작아지는 속도 */
+        }
+
+        /* 링크에 마우스를 올렸을 때 안쪽 이미지가 서서히 커짐 */
+        .image-link:hover .floating-image {
+            transform: scale(1.12); /* 12% 확대 */
+        }
+
+        /* 서브 텍스트 스타일 */
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        /* 버튼 그룹 스타일 */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* 푸터 스타일 (선 제거 완료) */
+        footer {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; /* 우측 정렬 유지 */
+            padding: 20px 40px;
+            font-size: 0.8rem;
+            color: #555555;
+            /* border-top 코드를 제거하여 선을 없앰 */
+        }
+
+        /* 푸터 링크 스타일 (글자 색상 #8e8e8e 적용) */
+        footer a {
+            color: #8e8e8e;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.2s ease;
+        }
+
+        /* 푸터 링크에 마우스를 올렸을 때 색상 */
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* -------------------------------------------------- */
+        /* 애니메이션 키프레임 정의 */
+        /* -------------------------------------------------- */
+
+        /* 1. 페이지 시작 시 서서히 위로 올라오는 효과 */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 2. 통째로 위아래로 둥실둥실 떠다니는 효과 */
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Hello world</h1>
+
+    <div></div>
+
+    <div class="hero-container">
+        <a href="https://discord.gg/vp8rhNRxDj" target="_blank" class="image-link">
+            <img src="https://cdn.discordapp.com/attachments/1545007229986545764/1545402067215065220/flamingtext_com-3108768290.gif?ex=6a9cac15&is=6a9b5a95&hm=4d31907a6359c8e84cd6c223aba4e9cd637b2f82b7de94d5b4622a113b6cd794&" alt="Potassium" class="floating-image">
+        </a>
+        
+        <p class="subtitle">discord best self bot</p>
+        
+        <div class="button-group">
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <a href="https://discord.gg/vp8rhNRxDj" target="_blank">Discord</a>
+            <a href="https://example.com/" target="_blank">Explanation</a>
+        </div>
+    </footer>
+
 </body>
 </html>
